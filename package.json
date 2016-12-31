@@ -1,0 +1,12 @@
+{
+  "name": "kitchensink.casparcg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "actions.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "casparcg-connection": "^0.13.1"
+  }
+}
