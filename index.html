@@ -1,58 +1,58 @@
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Client</title>
+  <meta charset="UTF-8">
+  <title>Client</title>
 </head>
 <body>
-	<h2>Commands</h2>
-	<p></p>
+  <h2>Commands</h2>
+  <p></p>
 
   <div class="commands">
-		<div class="title">
-			<input type="text" name="title" placeholder="Title...">
-			<button data-id="title-show">Send</button>
-			<button data-id="title-hide">Hide</button>
-		</div>
-		<div class="subtitle">
-			<input type="text" name="subtitle" placeholder="Subtitle...">
-			<button data-id="subtitle-show">Send</button>
-			<button data-id="subtitle-hide">Hide</button>
-		</div>
-		<div class="location">
-			<input type="text" name="location" placeholder="Location...">
-			<button data-id="location-show">Send</button>
-			<button data-id="location-hide">Hide</button>
-		</div>
-	</div>
+    <div class="title">
+      <input type="text" name="title" placeholder="Title...">
+      <button data-id="title-show">Send</button>
+      <button data-id="title-hide">Hide</button>
+    </div>
+    <div class="subtitle">
+      <input type="text" name="subtitle" placeholder="Subtitle...">
+      <button data-id="subtitle-show">Send</button>
+      <button data-id="subtitle-hide">Hide</button>
+    </div>
+    <div class="location">
+      <input type="text" name="location" placeholder="Location...">
+      <button data-id="location-show">Send</button>
+      <button data-id="location-hide">Hide</button>
+    </div>
+  </div>
 
-	<script>
+  <script>
 
-		function sendCommand (url, data) {
-			fetch(`/${url}`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: JSON.stringify(data),
-			})
-			.then(response => console.log(response.json()))
-		}
+    function sendCommand (url, data) {
+      fetch(`/${url}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: JSON.stringify(data),
+      })
+      .then(response => console.log(response.json()))
+    }
 
 
-		function handleForm (event) {
-			if (!event.target.matches('button')) return;
+    function handleForm (event) {
+      if (!event.target.matches('button')) return;
 
-			let data = {};
-			let [type, action] = this.dataset.id.split('-');
+      let data = {};
+      let [type, action] = this.dataset.id.split('-');
 
-			data[type] = document.querySelector(`[name=${type}]`).value;
-			data.action = action;
+      data[type] = document.querySelector(`[name=${type}]`).value;
+      data.action = action;
 
-			sendCommand('update', data);
-		}
+      sendCommand('update', data);
+    }
 
-		let buttons = document.querySelectorAll('button');
-		buttons.forEach(btn => { btn.addEventListener('click', handleForm) });
+    let buttons = document.querySelectorAll('button');
+    buttons.forEach(btn => { btn.addEventListener('click', handleForm) });
 
-	</script>
+  </script>
 
 </body>
 </html>
