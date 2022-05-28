@@ -7,6 +7,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "casparcg-connection": "^0.13.1"
+    "casparcg-connection": "^0.17.1"
   }
 }
